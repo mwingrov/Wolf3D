@@ -6,7 +6,7 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 20:17:39 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/12/01 20:31:30 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/12/01 23:27:21 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int				ft_error_handel(t_map *z)
 {
 	z->quit = 0;
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	{
-		printf("Error Initializing SDL: %s\n", SDL_GetError());
 		return (1);
-	}
 	z->win = SDL_CreateWindow("Wolf3D!", SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED,
 			640, 480, 0);
@@ -30,12 +27,12 @@ int				ft_error_handel(t_map *z)
 	SDL_RenderClear(z->rend);
 	if (!z->win)
 	{
-		printf("Error Initializing SDL: %s\n", SDL_GetError());
+		ft_putendl("Error Initializing SDL:");
 		return (1);
 	}
 	if (!z->rend)
 	{
-		printf("Error_Creating renderer: %s\n", SDL_GetError());
+		ft_putendl("Error_Creating renderer:");
 		SDL_DestroyWindow(z->win);
 		return (1);
 	}
@@ -106,7 +103,7 @@ int				main(int ac, char **av)
 {
 	t_map		z;
 
-	if (ac == 2 && ft_strchr(av[1], 'm'))
+	if (ac == 2)
 	{
 		z.res = two_arr(av[1]);
 		ft_error_handel(&z);
@@ -127,5 +124,9 @@ int				main(int ac, char **av)
 		SDL_Quit();
 	}
 	else
-		ft_putstr("Error!!!!! Please insert one argument.\n");
+		ft_putendl("Error!!!!! Invalid or no Arguments.");
+	while (1)
+	{
+
+	}
 }
