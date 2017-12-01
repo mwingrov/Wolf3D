@@ -6,7 +6,7 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 20:17:39 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/12/01 23:27:21 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/12/02 01:54:14 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,4 @@ int				main(int ac, char **av)
 	}
 	else
 		ft_putendl("Error!!!!! Invalid or no Arguments.");
-	while (1)
-	{
-
-	}
 }
