@@ -6,7 +6,7 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:05:05 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/12/01 19:28:35 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/12/02 04:48:48 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_list
 	int				data;
 }					t_list;
 
+void				*ft_realloc(void *ptr, size_t size);
 void				ft_list_remove_if(t_list **begin_list, void *data_ref, \
 					int (*cmp)());
 void				ft_swap(int *a, int *b);
