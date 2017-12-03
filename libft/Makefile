@@ -6,7 +6,7 @@
 #    By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/17 17:54:18 by mwingrov          #+#    #+#              #
-#    Updated: 2017/11/22 14:38:27 by mwingrov         ###   ########.fr        #
+#    Updated: 2017/12/02 05:00:11 by mwingrov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC3 =	ft_strcmp.c ft_strncmp.c ft_memalloc.c ft_memdel.c \
 		ft_strnequ.c ft_strtrim.c ft_putendl.c ft_putchar_fd.c
 SRC4 = 	ft_putnbr_fd.c ft_putnbr.c ft_putstr_fd.c ft_putendl_fd.c \
 		ft_strjoin.c ft_strsub.c ft_strsplit.c ft_itoa.c \
-		ft_swap.c ft_list_foreach.c \
+		ft_swap.c ft_list_foreach.c ft_realloc.c \
 		ft_sort_list.c ft_itoa_base.c ft_sort_int_tab.c\
 
 SRC = $(SRC1) $(SRC2) $(SRC3) $(SRC4)

@@ -6,7 +6,7 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 20:17:39 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/12/02 01:54:14 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/12/02 05:34:00 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,31 @@ t_map			ft_render_map(t_map *z)
 	z->y = z->drawstart;
 	while (z->y < z->drawend)
 	{
-		if (z->side != 1)
+		if (z->side == 0)
 		{
 			if (z->res[z->mapx][z->mapy] == 1)
 				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
 			else if (z->res[z->mapx][z->mapy] == 2)
+				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
+			else if (z->res[z->mapx][z->mapy] == 3)
+				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
+			else if (z->res[z->mapx][z->mapy] == 4)
+				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
+			else if (z->res[z->mapx][z->mapy] == 5)
+				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
+		}
+		else
+		{
+			if (z->res[z->mapx][z->mapy] == 1)
+				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
+			else if (z->res[z->mapx][z->mapy] == 2)
 				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
 			else if (z->res[z->mapx][z->mapy] == 3)
-				SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
+				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
 			else if (z->res[z->mapx][z->mapy] == 4)
-				SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
+				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
 			else if (z->res[z->mapx][z->mapy] == 5)
-				SDL_SetRenderDrawColor(z->rend, 255, 255, 255, 255);
+				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
 		}
 		ft_render_map_side(z);
 		SDL_RenderDrawPoint(z->rend, z->x, z->y);
@@ -66,18 +79,31 @@ t_map			ft_render_map(t_map *z)
 
 t_map			ft_render_map_side(t_map *z)
 {
-	if (z->side == 1)
+	if (z->side == 0 && z->raydirx < 0)
 	{
 		if (z->res[z->mapx][z->mapy] == 1)
-			SDL_SetRenderDrawColor(z->rend, 155, 0, 0, 255);
+			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
 		else if (z->res[z->mapx][z->mapy] == 2)
-			SDL_SetRenderDrawColor(z->rend, 0, 155, 0, 255);
+			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
 		else if (z->res[z->mapx][z->mapy] == 3)
-			SDL_SetRenderDrawColor(z->rend, 0, 0, 155, 255);
+			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
 		else if (z->res[z->mapx][z->mapy] == 4)
-			SDL_SetRenderDrawColor(z->rend, 155, 155, 0, 255);
+			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
 		else if (z->res[z->mapx][z->mapy] == 5)
-			SDL_SetRenderDrawColor(z->rend, 155, 155, 155, 255);
+			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
+	}
+	if (z->side == 1 && z->raydiry < 0)
+	{
+		if (z->res[z->mapx][z->mapy] == 1)
+			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 2)
+			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 3)
+			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 4)
+			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 5)
+			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
 	}
 	return (*z);
 }
@@ -120,6 +146,7 @@ int				main(int ac, char **av)
 			}
 			keypress(&z);
 		}
+		free(z.res);
 		SDL_DestroyWindow(z.win);
 		SDL_Quit();
 	}
