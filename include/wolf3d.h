@@ -53,6 +53,9 @@ typedef struct			s_map
 	int					drawstart;
 	int					drawend;
 	int					quit;
+	double				distwall;
+	double				distplayer;
+	double				currentdist;
 	double				frametime;
 	double				movespeed;
 	double				rotspeed;
@@ -96,5 +99,7 @@ t_map					ft_calc_ray(t_map *z);
 t_map					ft_cal_sidedist(t_map *z);
 t_map					ft_draw_map(t_map *z);
 t_map					ft_calc_dda(t_map *z);
-
+t_map					sidedraw_x(t_map *z);
+t_map					sidedraw_y(t_map *z);
+t_map					ft_ceiling_and_floor(t_map *z);
 #endif

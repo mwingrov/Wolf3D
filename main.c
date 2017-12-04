@@ -57,20 +57,9 @@ t_map			ft_render_map(t_map *z)
 			else if (z->res[z->mapx][z->mapy] == 5)
 				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
 		}
-		else
-		{
-			if (z->res[z->mapx][z->mapy] == 1)
-				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 2)
-				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 3)
-				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 4)
-				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 5)
-				SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-		}
+		sidedraw_x(z);
 		ft_render_map_side(z);
+		sidedraw_y(z);
 		SDL_RenderDrawPoint(z->rend, z->x, z->y);
 		z->y++;
 	}
@@ -92,6 +81,29 @@ t_map			ft_render_map_side(t_map *z)
 		else if (z->res[z->mapx][z->mapy] == 5)
 			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
 	}
+	return (*z);
+}
+
+t_map			sidedraw_x(t_map *z)
+{
+	if (z->side != 0)
+	{
+		if (z->res[z->mapx][z->mapy] == 1)
+			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 2)
+			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 3)
+			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 4)
+			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
+		else if (z->res[z->mapx][z->mapy] == 5)
+			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
+	}
+	return (*z);
+}
+
+t_map			sidedraw_y(t_map *z)
+{
 	if (z->side == 1 && z->raydiry < 0)
 	{
 		if (z->res[z->mapx][z->mapy] == 1)
@@ -122,6 +134,31 @@ t_map			ft_initialize(t_map *z)
 	z->y = 0;
 	z->w = 640;
 	z->h = 480;
+	z->distplayer = 0.0;
+	return (*z);
+}
+
+t_map			ft_ceiling_and_floor(t_map *z)
+{
+	z->distwall = z->perpwalldist;
+	if (z->drawend < 0)
+		z->drawend = z->h;
+	while (z->y == z->drawend + 1 && z->y < z->h)
+	{
+		z->currentdist = z->h / (2.0 * z->y - z->h);
+		if (z->res[z->mapx][z->mapy] == 1)
+			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+		else if (z->res[z->mapx][z->mapy] == 2)
+			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+		else if (z->res[z->mapx][z->mapy] == 3)
+			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+		else if (z->res[z->mapx][z->mapy] == 4)
+			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+		else if (z->res[z->mapx][z->mapy] == 5)
+			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+		SDL_RenderDrawPoint(z->rend, z->x, z->y);
+		z->y++;
+	}
 	return (*z);
 }
 
@@ -143,6 +180,7 @@ int				main(int ac, char **av)
 				ft_calc_dda(&z);
 				ft_draw_map(&z);
 				ft_render_map(&z);
+				ft_ceiling_and_floor(&z);
 			}
 			keypress(&z);
 		}
