@@ -143,19 +143,37 @@ t_map			ft_ceiling_and_floor(t_map *z)
 	z->distwall = z->perpwalldist;
 	if (z->drawend < 0)
 		z->drawend = z->h;
-	while (z->y == z->drawend + 1 && z->y < z->h)
+		z->y = z->drawend + 1;
+	while (z->y < z->h)
 	{
 		z->currentdist = z->h / (2.0 * z->y - z->h);
 		if (z->res[z->mapx][z->mapy] == 1)
-			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
 		else if (z->res[z->mapx][z->mapy] == 2)
-			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
 		else if (z->res[z->mapx][z->mapy] == 3)
-			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
 		else if (z->res[z->mapx][z->mapy] == 4)
-			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
 		else if (z->res[z->mapx][z->mapy] == 5)
-			SDL_SetRenderDrawColor(z->rend, 10, 10, 10, 255);
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
+		SDL_RenderDrawPoint(z->rend, z->x, z->h - z->y);
+		z->y++;
+	}
+	z->y = z->drawend + 1;
+	while (z->y < z->h)
+	{
+		z->currentdist = z->h / (2.0 * z->y - z->h);
+		if (z->res[z->mapx][z->mapy] == 1)
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
+		else if (z->res[z->mapx][z->mapy] == 2)
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
+		else if (z->res[z->mapx][z->mapy] == 3)
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
+		else if (z->res[z->mapx][z->mapy] == 4)
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
+		else if (z->res[z->mapx][z->mapy] == 5)
+			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
 		SDL_RenderDrawPoint(z->rend, z->x, z->y);
 		z->y++;
 	}
