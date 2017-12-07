@@ -6,7 +6,7 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 20:17:39 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/12/02 05:34:00 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/12/05 15:37:00 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,87 +39,6 @@ int				ft_error_handel(t_map *z)
 	return (0);
 }
 
-t_map			ft_render_map(t_map *z)
-{
-	z->y = z->drawstart;
-	while (z->y < z->drawend)
-	{
-		if (z->side == 0)
-		{
-			if (z->res[z->mapx][z->mapy] == 1)
-				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 2)
-				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 3)
-				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 4)
-				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
-			else if (z->res[z->mapx][z->mapy] == 5)
-				SDL_SetRenderDrawColor(z->rend, 255, 0, 0, 255);
-		}
-		sidedraw_x(z);
-		ft_render_map_side(z);
-		sidedraw_y(z);
-		SDL_RenderDrawPoint(z->rend, z->x, z->y);
-		z->y++;
-	}
-	return (*z);
-}
-
-t_map			ft_render_map_side(t_map *z)
-{
-	if (z->side == 0 && z->raydirx < 0)
-	{
-		if (z->res[z->mapx][z->mapy] == 1)
-			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
-		else if (z->res[z->mapx][z->mapy] == 2)
-			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
-		else if (z->res[z->mapx][z->mapy] == 3)
-			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
-		else if (z->res[z->mapx][z->mapy] == 4)
-			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
-		else if (z->res[z->mapx][z->mapy] == 5)
-			SDL_SetRenderDrawColor(z->rend, 0, 0, 255, 255);
-	}
-	return (*z);
-}
-
-t_map			sidedraw_x(t_map *z)
-{
-	if (z->side != 0)
-	{
-		if (z->res[z->mapx][z->mapy] == 1)
-			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 2)
-			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 3)
-			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 4)
-			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 5)
-			SDL_SetRenderDrawColor(z->rend, 0, 255, 0, 255);
-	}
-	return (*z);
-}
-
-t_map			sidedraw_y(t_map *z)
-{
-	if (z->side == 1 && z->raydiry < 0)
-	{
-		if (z->res[z->mapx][z->mapy] == 1)
-			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 2)
-			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 3)
-			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 4)
-			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
-		else if (z->res[z->mapx][z->mapy] == 5)
-			SDL_SetRenderDrawColor(z->rend, 255, 255, 0, 255);
-	}
-	return (*z);
-}
-
 t_map			ft_initialize(t_map *z)
 {
 	z->posx = 2;
@@ -138,45 +57,13 @@ t_map			ft_initialize(t_map *z)
 	return (*z);
 }
 
-t_map			ft_ceiling_and_floor(t_map *z)
+t_map			call_f(t_map *z)
 {
-	z->distwall = z->perpwalldist;
-	if (z->drawend < 0)
-		z->drawend = z->h;
-		z->y = z->drawend + 1;
-	while (z->y < z->h)
-	{
-		z->currentdist = z->h / (2.0 * z->y - z->h);
-		if (z->res[z->mapx][z->mapy] == 1)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
-		else if (z->res[z->mapx][z->mapy] == 2)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
-		else if (z->res[z->mapx][z->mapy] == 3)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
-		else if (z->res[z->mapx][z->mapy] == 4)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
-		else if (z->res[z->mapx][z->mapy] == 5)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 155, 255);
-		SDL_RenderDrawPoint(z->rend, z->x, z->h - z->y);
-		z->y++;
-	}
-	z->y = z->drawend + 1;
-	while (z->y < z->h)
-	{
-		z->currentdist = z->h / (2.0 * z->y - z->h);
-		if (z->res[z->mapx][z->mapy] == 1)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
-		else if (z->res[z->mapx][z->mapy] == 2)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
-		else if (z->res[z->mapx][z->mapy] == 3)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
-		else if (z->res[z->mapx][z->mapy] == 4)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
-		else if (z->res[z->mapx][z->mapy] == 5)
-			SDL_SetRenderDrawColor(z->rend, 55, 55, 55, 255);
-		SDL_RenderDrawPoint(z->rend, z->x, z->y);
-		z->y++;
-	}
+	ft_calc_ray(z);
+	ft_cal_sidedist(z);
+	ft_calc_dda(z);
+	ft_draw_map(z);
+	ft_render_map(z);
 	return (*z);
 }
 
@@ -186,26 +73,25 @@ int				main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		z.res = two_arr(av[1]);
-		ft_error_handel(&z);
-		ft_initialize(&z);
-		while (z.quit == 0)
+		if (!ft_strcmp("maps/map0", av[1]) || !ft_strcmp("maps/map1", av[1]) ||
+			!ft_strcmp("maps/map2", av[1]) || !ft_strcmp("maps/map3", av[1]))
 		{
-			while (z.x++ < z.w)
+			z.res = two_arr(av[1]);
+			ft_error_handel(&z);
+			ft_initialize(&z);
+			while (z.quit == 0)
 			{
-				ft_calc_ray(&z);
-				ft_cal_sidedist(&z);
-				ft_calc_dda(&z);
-				ft_draw_map(&z);
-				ft_render_map(&z);
-				ft_ceiling_and_floor(&z);
+				while (z.x++ < z.w)
+					call_f(&z);
+				keypress(&z);
 			}
-			keypress(&z);
+			SDL_DestroyWindow(z.win);
+			SDL_Quit();
 		}
-		free(z.res);
-		SDL_DestroyWindow(z.win);
-		SDL_Quit();
+		else
+			ft_putendl("Error!!!!! Invalid or no Arguments.");
 	}
 	else
 		ft_putendl("Error!!!!! Invalid or no Arguments.");
+	return (0);
 }

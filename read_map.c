@@ -6,7 +6,7 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 05:26:49 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/12/02 05:45:15 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/12/05 15:43:47 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,5 @@ double			**two_arr(char *filename)
 		free(line);
 	}
 	close(z.fd);
-	int		x;
-
-	x = 0;
-	while (newl[x])
-	{
-		free(newl[x]);
-		x++;
-	}
-	free(newl);
 	return (arr);
 }

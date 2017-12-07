@@ -6,7 +6,7 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 20:03:09 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/12/01 20:26:23 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/12/05 15:37:43 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
+# include <openGL/gl.h>
 
 typedef struct			s_coo
 {
@@ -101,5 +102,6 @@ t_map					ft_draw_map(t_map *z);
 t_map					ft_calc_dda(t_map *z);
 t_map					sidedraw_x(t_map *z);
 t_map					sidedraw_y(t_map *z);
-t_map					ft_ceiling_and_floor(t_map *z);
+t_map					ft_ceiling(t_map *z);
+t_map					ft_floor(t_map *z);
 #endif
