@@ -1,0 +1,20 @@
+build/SDL_syshaptic.lo: \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/SDL_syshaptic.c \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/../../SDL_internal.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/../../dynapi/SDL_dynapi.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/../../dynapi/SDL_dynapi_overrides.h \
+  include/SDL_config.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/SDL_platform.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/begin_code.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/close_code.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/SDL_assert.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/SDL_config.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/SDL_stdinc.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/SDL_haptic.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/SDL_error.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/include/SDL_joystick.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/../SDL_syshaptic.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/../../joystick/SDL_sysjoystick.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/../../joystick/SDL_joystick_c.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/../../joystick/darwin/SDL_sysjoystick_c.h \
+  /tmp/event/Wolf3D/SDL2-2.0.5/src/haptic/darwin/SDL_syshaptic_c.h
